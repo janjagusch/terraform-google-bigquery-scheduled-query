@@ -4,6 +4,13 @@ variable "config_file" {
   default     = null
 }
 
+variable "query" {
+  type        = string
+  description = "The query."
+  default     = null
+}
+
+
 variable "query_vars" {
   type        = map(string)
   description = "Values for placeholder variables in query."
