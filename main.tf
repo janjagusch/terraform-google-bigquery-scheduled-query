@@ -1,7 +1,8 @@
 locals {
-  config     = var.config_file == null ? yamldecode(file(var.config_file)) : {}
+  config     = try(var.config_file != null ? yamldecode(file(var.config_file)) : tomap(false), {}) # https://github.com/hashicorp/terraform/issues/22405#issuecomment-591917758
   query_file = contains(keys(local.config), "query_file") ? join("/", [dirname(var.config_file), local.config.query_file]) : null
-  query      = local.query_file != null ? templatefile(local.query_file, var.query_vars) : local.config.query
+  query_vars = lookup(local.config, "query_vars", var.query_vars)
+  query      = local.query_file != null ? templatefile(local.query_file, local.query_vars) : local.config.query
   dataset_id = lookup(local.config, "dataset_id", var.dataset_id)
   table_id   = lookup(local.config, "table_id", var.table_id)
 }
