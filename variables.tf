@@ -6,7 +6,7 @@ variable "config_file" {
 
 variable "query_vars" {
   type        = map(string)
-  description = "Values for placeholder variables in query"
+  description = "Values for placeholder variables in query."
   default     = {}
 }
 
@@ -36,6 +36,6 @@ variable "schedule" {
 
 variable "write_disposition" {
   type        = string
-  description = "Can be 'WRITE_TRUNCATE' or 'WRITE_APPEND'"
+  description = "Can be 'WRITE_TRUNCATE' or 'WRITE_APPEND'."
   default     = null
 }
