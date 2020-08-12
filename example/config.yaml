@@ -1,0 +1,5 @@
+dataset_id: my_dataset
+table_id: my_table
+location: EU
+schedule: every day 01:00
+write_disposition: WRITE_TRUNCATE
